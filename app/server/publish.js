@@ -4,7 +4,6 @@
  * });
  */
 
-
 Meteor.publish('categories', function () {
   var allCats = _.pluck(Categories.find({}, {fields: {name: 1}}).fetch(), 'name'),
       popCats = _.filter(allCats, function(catId) {
