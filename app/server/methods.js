@@ -3,6 +3,15 @@
 /*****************************************************************************/
 var Future = Npm.require('fibers/future');
 
+Meteor.startup(function () {
+  if (Categories.find().count() === 0) {
+    Meteor.call('seedCatagories')
+  }
+  if (Meteor.users.find().count() === 0) {
+    Meteor.call('seedUser')
+  }
+})
+
 Meteor.methods({
   'user/toggleAutoupdate': function() {
 
@@ -247,6 +256,31 @@ Meteor.methods({
 
     return true;
 
+  },
+
+  'seedCatagories': function () {
+    var cats = [ 
+      { name: 'Social', showSummary: true },
+      { name: 'Project Management', showSummary: true },
+      { name: 'Publishing', showSummary: true },
+      { name: 'Games', showSummary: true },
+      { name: 'Email', showSummary: true },
+      { name: 'Media', showSummary: true },
+      { name: 'Science', showSummary: true },
+      { name: 'Accounting', showSummary: true },
+      { name: 'Productivity', showSummary: true } ]
+    _.each(cats, function (cat) {
+      Categories.insert(cat)
+    })
+  },
+
+  'seedUser': function () {
+    var user = {
+      username: 'tableflip',
+      fullname: 'tableflip admin',
+      email: 'richard@tableflip.io'
+    }
+    Meteor.users.insert(user)
   }
 
 });
