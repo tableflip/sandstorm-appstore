@@ -62,6 +62,12 @@ Template.Topbar.helpers({
     var path = /\/genres\/(.*)/.exec(FlowRouter.reactiveCurrent().path);
     return path && path.length && path[1] === this.name;
 
+  },
+
+  stopped: function() {
+
+    return FlowRouter.allStopped() ? 'true': 'false';
+
   }
 });
 

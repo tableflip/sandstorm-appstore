@@ -51,3 +51,4 @@ amplify
 cfs:standard-packages
 cfs:filesystem
 cfs:s3
+richsilv:subscription-stopped
