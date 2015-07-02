@@ -63,6 +63,17 @@ Template.appTable.onRendered(function() {
 
 });
 
+Template.appTable.animations({
+  ".app-item-container": {
+    animateInitial: true, // animate the intial elements
+    animateInitialStep: 200, // Step between each animation for each initial item
+    animateInitialDelay: 0,
+    container: ".app-table", // container of the ".item" elements
+    in: "animated fast fadeIn", // class applied to inserted elements (animations courtesy of animate.css)
+    out: "animated fast fadeOut" // class applied to removed elements
+  }
+});
+
 function recalcLineCapacity() {
 
   var rem = parseFloat(getComputedStyle(document.documentElement).fontSize),
@@ -118,4 +129,15 @@ Template.appTableLarge.events({
 
   }
 
+});
+
+Template.appTableLarge.animations({
+  ".app-item-container": {
+    animateInitial: true, // animate the intial elements
+    animateInitialStep: 200, // Step between each animation for each initial item
+    animateInitialDelay: 0,
+    container: ".app-table-large", // container of the ".item" elements
+    in: "animated fast fadeIn", // class applied to inserted elements (animations courtesy of animate.css)
+    out: "animated fast fadeOut" // class applied to removed elements
+  }
 });
